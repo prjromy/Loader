@@ -1,0 +1,207 @@
+﻿<!-- Logo -->
+@{
+
+    Loader.Service.ParameterService paramService = new Loader.Service.ParameterService();
+    Loader.Service.ParameterService companyName = new Loader.Service.ParameterService();
+    Loader.Service.EmployeeService employeeService = new Loader.Service.EmployeeService();
+    Loader.Models.Employee EmployeeImage = employeeService.GetEmployeePhoto(Loader.Models.Global.UserId);
+
+  
+
+    var CompanyName= employeeService.getCompanyName();
+
+
+}
+
+<div style="display:none">
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+
+        @Html.AntiForgeryToken()
+    }
+</div>
+
+<a href="Home/Index" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini">@CompanyName</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg">@CompanyName</span>
+</a>
+<!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top">
+    <!-- Sidebar toggle button-->
+
+
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+    </a>
+
+
+
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="hidden-xs"> TransactionDate: <span id="cTDate">@Convert.ToDateTime(Loader.Models.Global.TransactionDate).ToShortDateString()</span></span>
+                </a>
+            </li>
+
+      
+        </ul>
+        <style>
+            .fyear:hover {
+                background-color: #286090;
+            }
+        </style>
+        <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
+            @*<li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="label label-success">0</span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class="header">You have no tasks</li>
+                    <li>
+                        <!-- inner menu: contains the actual data -->
+
+                    </li>
+                    <li class="footer">
+                        <a href="#">View all tasks</a>
+                    </li>
+                </ul>     <!-- inner menu: contains the actual data -->
+                <!-- end message -->
+                <!-- Notifications: style can be found in dropdown.less -->*@
+         
+            <!-- Tasks: style can be found in dropdown.less -->
+            @*<li class="dropdown tasks-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-flag-o"></i>
+                        <span class="label label-danger">0</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have no tasks</li>
+                        <li>
+
+                        </li>
+                        <li class="footer">
+                            <a href="#">View all tasks</a>
+                        </li>
+                    </ul>
+                </li>*@
+            <!-- User Account: style can be found in dropdown.less -->
+
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    @*<img src="~/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">*@
+                    <span class="hidden-xs">@Loader.Models.Global.UserName</span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                        @if (@EmployeeImage == null)
+                        {
+                        @*EmployeeImage.StringPhoto = "~/Content/SBNJiAlSsx4AAAAASUVORK5CYII=.png";*@
+                        <img src="~/Content/SBNJiAlSsx4AAAAASUVORK5CYII=.png" class="img-circle" alt="User Image">
+                        }
+                        else{
+                        <img src="@EmployeeImage.StringPhoto" class="img-circle" alt="User Image">
+                        }
+                       
+
+                        <p>
+                            @Loader.Models.Global.UserName
+                            @*<small>Member since Nov. 2012</small>*@
+                        </p>
+                        <p>
+                            @{Loader.Service.UserVSBranchService usrBranchService = new Loader.Service.UserVSBranchService(); }
+                            Current Branch: @usrBranchService.GetBranchName(@Loader.Models.Global.BranchId)
+                        </p>
+                    </li>
+                    <!-- Menu Body -->
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <a href="#" class="btn btn-default btn-flat li-dropdown-notifications-changepassword">Change Password</a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-default btn-flat li-dropdown-notifications-logout">Sign out</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            @*<li class="dropdown notifications-changepassword">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        <span class="hidden-xs">Change Password</span>
+                    </a>
+                </li>
+                <li class="dropdown notifications-menu logout">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-log-out"></i>
+                        <span class="hidden-xs">Log Out</span>
+                    </a>
+                </li>*@
+
+            <li></li>            @*<li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>*@
+        </ul>
+    </div>
+</nav>
+
+<script src="~/Content/assets/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.li-dropdown-notifications-logout').click(function () {
+            debugger;
+            document.getElementById('logoutForm').submit();
+
+        });
+        $('li.list-group-item.fyear').click(function(){
+            debugger;
+            var id=$(this).attr('id');
+            $('ul.list-group').find('li.active').removeClass('active');
+            $(this).addClass('active')
+            if(id!=""&& !isNaN(id))
+            {
+                var data={FYId:id};
+                $.get("/Employee/SetFiscalYear",data,function(fyName){
+                    $("#cFYear").html(fyName);
+                });
+                $.get("/Employee/SetTranscationDate",data,function(fyName){
+                    debugger;
+                    $("#cTDate").html(fyName);
+
+                });
+            }
+            $(".content").empty();
+        });
+
+        $('.li-dropdown-notifications-changepassword').click(function () {
+            debugger;
+            $.ajax({
+                type: "get",
+                url: "/Manage/ChangePassword",
+                contentType: "application/json; charset=utf-8",
+                data:{userId:@Loader.Models.Global.UserId},
+                dataType: "html",
+                success: function (html) {
+                    debugger;
+                    $('section.content').html(html);
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+
+        });
+    });
+
+
+</script>
+
+<script src="~/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>

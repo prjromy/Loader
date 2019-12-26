@@ -1,0 +1,276 @@
+﻿body {
+}
+
+ 
+
+.pagedisplay
+{
+         width:80px;
+         text-align:center;
+    }
+
+/*
+.Item:hover 
+{
+  
+    border-style:ridge;
+    
+    border-top: 1px  outset blue;  
+    border-left: 1px groove blue;
+    border-right: 1px inset blue; 
+    border-bottom: 1px ridge green; 
+    border-bottom-style:double;
+    
+}
+*/
+/*
+.Group:hover
+{
+    border-style:ridge;
+    
+    border-top: 1px  outset blue;  
+    border-left: 1px groove blue;
+    border-right: 1px inset blue; 
+    border-bottom: 1px ridge blue; 
+    
+    }
+*/
+#treeboxleft
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    background-color:#D0CDC0; 
+    width:200px; 
+    height:100%;
+    position:relative; 
+    overflow:hidden; 
+    float:left;
+}
+    
+#pagecontainer
+{
+    overflow:hidden; 
+    top:0;
+    bottom:0px;
+    background-color:White;
+}
+
+/*    
+#pagetitle
+{
+   
+    background-color:#FF7703;
+    left:0px; 
+    width:100%; 
+    position:relative; 
+ 
+    min-height:25px;
+    max-height:25px;
+    overflow:hidden;
+    font-size:medium;
+    font-weight:bold;
+    color:Maroon;     
+    font-family:Microsoft Sans Serif;
+    padding:5px 0 5px 0;
+    
+    margin-top:0px;
+    
+}*/
+#pagedetails
+    {
+    background-color:white;    
+    left:0px; 
+    width:inherit; 
+    position:relative; 
+    height:93%;
+    width:100%;
+    bottom:0px;
+    min-height:100px;
+    overflow:auto;    
+    }
+    
+    #error
+    {
+        color:Red; background-color:White; text-align:right;
+        }
+        #success
+        {
+            color:Green; background-color:White; text-align:right;
+            }
+
+
+
+/*
+.Group:hover::after
+{
+   
+   
+    background-image:none;    
+    content: 'Test ';
+    width: 100%;
+    background: red;
+    height: 20px;
+    display: block;
+    position:inherit;
+    left: -10px;
+ 
+}
+*/
+
+/*
+
+
+.toolbar{
+      font-size: 70%;
+      position:static;
+      top: 0px;
+      left:100px;
+      height:100px;
+      color: blue;
+      display:none;
+      background: #aaa;
+}
+*/
+
+
+/*
+.Group:hover > .Item{
+     display:block;
+     background-color:Green;
+}
+*/
+
+
+
+.truncate {
+	width: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	
+}
+
+
+a:link {
+COLOR: #0000FF;
+}
+a:visited {
+COLOR: #800080;
+}
+a:hover {
+COLOR: #FF0000;
+}
+a:active {
+COLOR: #00FF00;
+}
+/*
+a:hover:after
+{
+content: "\00bb";
+}
+*/
+
+
+
+a.edit 
+{
+    background-image: url("../Content/Icons/File2.jpg");
+    background-position: top left;
+    background-repeat: no-repeat;
+    width:49px;
+    height:22px;
+    display: inline-table;
+    text-decoration:none;
+    clear:none;
+}
+
+a:hover.edit 
+{
+    background-image: url("../Content/Icons/Folder3.jpg");
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+
+#MBox
+{
+    font-family:Times New Roman;
+    text-align:center;
+    font-weight:bold;
+    border-width:4px;
+    /*border-bottom-color:Green;*/
+    border-color:Silver;
+    background-color:White;
+    margin-left:10px;
+   /* border-style:double;*/
+    border-style:groove;
+     
+     
+}
+
+.srchDialog
+{
+    text-decoration:none;
+    /*color:Blue;*/
+    text-align:center;
+    border-style:ridge;
+    border-color:Red;
+    background-color:White;
+    font-size:10px;
+}
+
+.EGroup
+{
+    /*background-image: url("../Content/Icons/upload.jpg");*/
+    background-repeat:no-repeat;
+    background-size:cover;
+   
+    float:left;
+    min-width:180px;
+    max-width:180px;
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+	margin-left : 10px;
+	margin-right : 10px;
+	margin-top:10px;
+	margin-bottom:10px;
+	text-align:center;
+	min-height:180px;
+	height:auto;
+    white-space:nowrap;
+	text-overflow: ellipsis;
+}
+
+
+.Main
+{
+    min-width:184px;
+    max-width:184px;
+
+	margin: 20px 0px 20px 0px;
+
+	text-align:center;
+	min-height:100px;
+    height:auto;
+    white-space:normal;
+	text-overflow: ellipsis;
+    /*overflow:hidden;*/
+    display:inline-block;
+    font-size: .95em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+}
+
+/*Date picker*/
+.chdPickerMain .chdPicker .txtDateBS,.chdPickerMain .chdPicker .txtDateAD
+{
+    min-height:3px;
+    height:15px;
+    top:-2px;
+}
+
+.chdPickerMain .chdPicker .dpDFormat #DateType
+{
+    min-height:3px;
+    height:25px;
+    top:-1px;
+    position:relative;
+}
