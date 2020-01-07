@@ -44,8 +44,8 @@
      
        
 
-            <li class="sidebar-menu header" style="margin-left: 14px;">MAIN NAVIGATION</li>
-            <div class="main-side-tree" style="margin-left: -40px">
+            <li class="sidebar-menu header" style="margin-left: 14px;"><b>MAIN NAVIGATION</b></li>
+            <div class="main-side-tree" style="margin-left: -20px">
                 @Html.EditorFor(x => x.LayoutTreedata)
             </div>
 
@@ -88,6 +88,18 @@
     section.sidebar {
         height: initial !important;
     }
+
+    .circle-img {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.circle-img img {
+  height: 100%;
+  transform: translateX(-50%);
+  margin-left: 50%;
+}
 </style>
 
 
