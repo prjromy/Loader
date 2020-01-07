@@ -422,6 +422,7 @@ namespace Loader.Controllers
                 user.IsUnlimited = model.IsUnlimited;
                 user.IsActive = model.IsActive;
                 user.MTId = model.MTId;
+                user.UserDesignationId = model.UserDesignationId;
 
 
                 var result = await UserManager.UpdateAsync(user);

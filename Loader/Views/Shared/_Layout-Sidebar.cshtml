@@ -3,7 +3,13 @@
 
     var test = Model;
     //Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_Layout.cshtml";
-   
+    Loader.Service.EmployeeService employeeService = new Loader.Service.EmployeeService();
+    Loader.Models.Employee EmployeeImage = employeeService.GetEmployeePhoto(Loader.Models.Global.UserId);
+
+
+
+    var CompanyName = employeeService.getCompanyName();
+
 }
 
 <div class="box-body" id="treeview-menu-area">
@@ -11,8 +17,14 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-
-                <img src="~/Content/SBNJiAlSsx4AAAAASUVORK5CYII=.png" />
+                @if (@EmployeeImage == null)
+                {
+                    @*EmployeeImage.StringPhoto = "~/Content/SBNJiAlSsx4AAAAASUVORK5CYII=.png";*@
+                    <img src="~/Content/SBNJiAlSsx4AAAAASUVORK5CYII=.png" class="img-circle" alt="User Image">
+                }
+                else {
+                    <img src="@EmployeeImage.StringPhoto" class="img-circle" alt="User Image">
+                }
             </div>
             <div class="pull-left info">
                 <p>@Loader.Models.Global.UserName</p>

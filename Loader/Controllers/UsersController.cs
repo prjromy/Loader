@@ -187,11 +187,13 @@ namespace Loader.Controllers
                     createDTO.Email = usersDTO.Email;
                     createDTO.Password = usersDTO.PasswordHash;
                     createDTO.ConfirmPassword = usersDTO.PasswordHash;
-
+                    createDTO.UserDesignationId = usersDTO.UserDesignationId;
                     createDTO.MTId = usersDTO.MTId;
 
                     ViewBag.Id = 1;
                     ViewBag.MTText = new Loader.Repository.GenericUnitOfWork().Repository<MenuTemplate>().GetSingle(x => x.MTId == usersDTO.MTId).MTName;
+                    ViewBag.DesgText = new Loader.Repository.GenericUnitOfWork().Repository<Designation>().GetSingle(x => x.DGId == usersDTO.UserDesignationId).DGName;
+
                     if (ViewBag.WithEmployee == true)
                     {
                         if (usersDTO.EmployeeId != 0)
