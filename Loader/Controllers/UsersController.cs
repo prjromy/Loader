@@ -421,7 +421,20 @@ namespace Loader.Controllers
                     }
                     else
                     {
-                        listEmp = ctx.Employee.OrderBy(x => x.EmployeeName).Where(x => x.Status == 1 && x.DGId == 7).ToPagedList(page ?? 0, pageSize);
+                        // listEmp = ctx.Employee.OrderBy(x => x.EmployeeName).Where(x => x.Status == 1 && x.DGId == 7).ToPagedList(page ?? 0, pageSize);
+                        var collectionList = UsersService.GetEmployeeDetails(pageSize, page);
+                        List<Employee> employeeList = new List<Employee>();
+                        foreach (var item in collectionList)
+                        {
+                            Employee employee = new Employee();
+
+                            employee.EmployeeId = item.EmployeeId;
+                            employee.EmployeeName = item.EmployeeName;
+                            employee.EmployeeNo = item.EmployeeNo;
+                             employeeList.Add(employee);
+
+                        }
+                        listEmp = employeeList.ToPagedList(page ?? 0, pageSize);
                     }
                 }
 
@@ -468,9 +481,25 @@ namespace Loader.Controllers
                     }
                     else
                     {
-                        listEmp = ctx.Employee.OrderBy(x => x.EmployeeName).Where(m => m.EmployeeName.ToUpper().Contains(query.ToUpper()) && m.DGId == 7 && m.Status == 1).ToList();
+                        // listEmp = ctx.Employee.OrderBy(x => x.EmployeeName).Where(m => m.EmployeeName.ToUpper().Contains(query.ToUpper()) && m.DGId == 7 && m.Status == 1).ToList();
+
+                        // var collectionList = UsersService.GetEmployeeDetails( pageSize,page);
+                        var collectionList = UsersService.GetEmployeeDetails(pageSize, page);
+                        List<Employee> employeeList = new List<Employee>();
+                        foreach (var item in collectionList)
+                        {
+                            Employee employee = new Employee();
+
+                            employee.EmployeeId = item.EmployeeId;
+                            employee.EmployeeName = item.EmployeeName;
+                            employee.EmployeeNo = item.EmployeeNo;
+                            employeeList.Add(employee);
+
+                        }
+                        listEmp = employeeList.Where(m => m.EmployeeName.ToUpper().Contains(query.ToUpper()) ).ToList(); 
                     }
                 }
+                
                 else
                 {
                     if (param.SearchFor == "Employee")

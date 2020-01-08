@@ -590,5 +590,18 @@ namespace Loader.Service
         }
 
         #endregion
+
+
+        public List<EmployeeViewModel> GetEmployeeDetails(int pageSize,int? page = 1)
+        {
+            string query = "";
+            var branchId = Global.BranchId;
+            query = "select COUNT(*) OVER () AS TotalCount,* from [fin].[FGetUserByCollectorDesignation](2009," + branchId + ") ";
+            query += @" ORDER BY  EmployeeName
+                       OFFSET ((" + page + @" - 1) * " + pageSize + @") ROWS
+                       FETCH NEXT " + pageSize + " ROWS ONLY";
+            var EmplaoyeeList = uow.Repository<EmployeeViewModel>().SqlQuery(query).ToList();
+            return EmplaoyeeList;
+        }
     }
 }
